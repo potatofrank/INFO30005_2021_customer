@@ -1,11 +1,33 @@
-if(menu)
-    each product in menu
-        p #{product.snack_name}
-        p #{product.price}
-        p #{product.type}
-        p #{product.add_on}
-        p #{product.size}
-        p #{product.mass}
-        p #{product.calories}
-        button.btn(type="plus") +
-        br
+
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/menu.css')
+    block head
+body
+    if(menu)
+        each product,id in menu
+            p #{product.snack_name}
+            p #{product.price}
+            //p #{product.type}
+            //p #{product.add_on}
+            //p #{product.size}
+            p #{product.mass}
+            p #{product.calories}
+            button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
+            .product_detail
+                p #{product.snack_name}
+                p #{product.price}
+                p #{product.type}
+                p #{product.add_on}
+                p #{product.size}
+            br
+script.
+    function myFunction(id) {
+        var x = document.getElementsByClassName("product_detail");
+        if (x[id].style.display === "block") {
+            x[id].style.display = "none";
+        } else {
+            x[id].style.display = "block";
+        }
+    }
