@@ -24,6 +24,10 @@ body
                     p #{product.type}
                     p #{product.add_on}
                     p #{product.size}
+                    span total price = 
+                    span
+                        script.
+                            document.write(#{product.price});
                 br
     h1 BISCUIT
     if(menu)
@@ -52,4 +56,10 @@ script.
         } else {
             x[id].style.display = "block";
         }
-    }
+    };
+script.
+    function calculate_total_price(price) {
+        var x = price;
+        return 1;
+    
+    };
