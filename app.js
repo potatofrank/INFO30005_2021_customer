@@ -5,6 +5,7 @@ var createError = require('http-errors')
 const session = require('express-session')
 const flash = require('connect-flash')
 app.use(express.json())  // replaces body-parser
+app.use(express.static(path.join(__dirname, 'public')));
 
 
 // connect to models to routes
