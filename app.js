@@ -14,6 +14,7 @@ const indexRouter = require('./index')
 const vendorRouter = require('./vendor_routes/vendorRouter')
 const customerRouter = require('./customer_routes/customerRouter')
 
+
 //view engine set up
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');

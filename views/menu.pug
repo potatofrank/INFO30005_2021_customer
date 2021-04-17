@@ -2,10 +2,11 @@
 doctype html
 html
   head
-    style
-        include menu.css
+    link(rel='stylesheet', href='/stylesheets/menu.css')
     block head
 body
+    
+    a(href='/customer/menu/cart') Cart
     h1 COFFEE
     if(menu)
         each product,id in menu
@@ -44,6 +45,7 @@ body
                     p #{product.add_on}
                     p #{product.size}
                 br
+
 script.
     function myFunction(id) {
         var x = document.getElementsByClassName("product_detail");
