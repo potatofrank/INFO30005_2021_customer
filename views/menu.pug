@@ -2,26 +2,48 @@
 doctype html
 html
   head
-    link(rel='stylesheet', href='/menu.css')
+    style
+        include menu.css
     block head
 body
+    h1 COFFEE
     if(menu)
         each product,id in menu
-            p #{product.snack_name}
-            p #{product.price}
-            //p #{product.type}
-            //p #{product.add_on}
-            //p #{product.size}
-            p #{product.mass}
-            p #{product.calories}
-            button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
-            .product_detail
+            if(product.type==="COFFEE")
                 p #{product.snack_name}
                 p #{product.price}
-                p #{product.type}
-                p #{product.add_on}
-                p #{product.size}
-            br
+                //p #{product.type}
+                //p #{product.add_on}
+                //p #{product.size}
+                p #{product.mass}
+                p #{product.calories}
+                button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
+                .product_detail
+                    p #{product.snack_name}
+                    p #{product.price}
+                    p #{product.type}
+                    p #{product.add_on}
+                    p #{product.size}
+                br
+    h1 BISCUIT
+    if(menu)
+        each product,id in menu
+            if(product.type==="BISCUIT")
+                p #{product.snack_name}
+                p #{product.price}
+                //p #{product.type}
+                //p #{product.add_on}
+                //p #{product.size}
+                p #{product.mass}
+                p #{product.calories}
+                button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
+                .product_detail
+                    p #{product.snack_name}
+                    p #{product.price}
+                    p #{product.type}
+                    p #{product.add_on}
+                    p #{product.size}
+                br
 script.
     function myFunction(id) {
         var x = document.getElementsByClassName("product_detail");
