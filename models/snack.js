@@ -7,6 +7,8 @@ const snackSchema = new mongoose.Schema({
   type: String,
   add_on: String,
   size: String,
+  mass: String,
+  calories: String,
 })
 
 const Snack = mongoose.model("Snack", snackSchema)

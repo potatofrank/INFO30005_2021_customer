@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+let menu_length = 0
 
 // import snack model
 const Snack = mongoose.model("Snack")
@@ -14,13 +15,16 @@ const getAllSnack = async (req, res) => {
   }
 }
 
+const menu_get = function(req, res){
+  Snack.find()
+    .lean()
+    .then(function (doc) {
+      menu_length = doc.length
+      console.log(doc)
+      res.render('menu', {menu_length: menu_length, menu: doc, user:req.user})
+    })
+}
 
-// change an author (POST)
-
-// add an author (POST)
-
-
-// remember to export the functions
 module.exports = {
-  getAllSnack //, updateAuthor, addAuthor
+  getAllSnack, menu_get //, updateAuthor, addAuthor
 }
