@@ -29,6 +29,9 @@ body
                     span
                         script.
                             document.write(#{product.price});
+                    form(action='/customer/menu', method='POST')
+                        
+                        button.btn(type="add") Add to cart
                 br
     h1 BISCUIT
     if(menu)
@@ -48,6 +51,7 @@ body
                     p #{product.type}
                     p #{product.add_on}
                     p #{product.size}
+                    button.btn(type="add") Add to cart
                 br
 
 script.

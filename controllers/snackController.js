@@ -25,6 +25,13 @@ const menu_get = function(req, res){
     })
 }
 
+const cart_post = function (req, res){
+  const {snack_name, price, first_name} = req.body
+  let errors = []
+  console.log(req.body)
+}
+
+
 module.exports = {
-  getAllSnack, menu_get //, updateAuthor, addAuthor
+  getAllSnack, menu_get, cart_post //, updateAuthor, addAuthor
 }

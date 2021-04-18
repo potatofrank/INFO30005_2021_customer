@@ -4,8 +4,7 @@ var path = require('path')
 var createError = require('http-errors')
 const session = require('express-session')
 const flash = require('connect-flash')
-app.use(express.json())  // replaces body-parser
-app.use(express.static(path.join(__dirname, 'public')));
+const bodyParser = require('body-parser');
 
 
 // connect to models to routes
@@ -19,6 +18,10 @@ const customerRouter = require('./customer_routes/customerRouter')
 //view engine set up
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
+app.use(express.json())  // replaces body-parser
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use(
   session({

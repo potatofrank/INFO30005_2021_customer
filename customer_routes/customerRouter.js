@@ -7,4 +7,6 @@ router.get('/menu', snack_controller.menu_get)
 
 router.get('/menu/cart', menu_controller.cart_get)
 
+router.post('/menu', snack_controller.cart_post)
+
 module.exports = router
