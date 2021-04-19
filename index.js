@@ -14,9 +14,5 @@ router.get('/vendor', function(req, res) {
   res.render('vendor', {user:req.user});
 })
 
-router.post('/test', function(req, res){
-  console.log("I'm inside the post method")
-  console.log(req.body)
-})
 
 module.exports = router;

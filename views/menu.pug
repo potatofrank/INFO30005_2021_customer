@@ -8,6 +8,8 @@ body
     
     a(href='/customer/menu/cart') Cart
     h1 COFFEE
+    if(successMessage)
+        p #{successMessage}
     if(menu)
         each product,id in menu
             if(product.type==="COFFEE")
@@ -30,7 +32,8 @@ body
                         script.
                             document.write(#{product.price});
                     form(action='/customer/menu', method='POST')
-                        
+                        input(type='hidden' name='snack_name' value= product.snack_name )
+                        input(type='hidden' name='price' value= product.price)
                         button.btn(type="add") Add to cart
                 br
     h1 BISCUIT

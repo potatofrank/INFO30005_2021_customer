@@ -27,3 +27,4 @@ db.once("open", async () => {
 require("./author")
 require("./snack")
 require("./vendor")
+require("./cart")

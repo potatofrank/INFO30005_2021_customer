@@ -1,8 +1,10 @@
 const mongoose = require("mongoose")
 let menu_length = 0
+let menu_data = {}
 
 // import snack model
 const Snack = mongoose.model("Snack")
+const Cart = mongoose.model("Cart")
 
 // get all authors
 const getAllSnack = async (req, res) => {
@@ -20,15 +22,31 @@ const menu_get = function(req, res){
     .lean()
     .then(function (doc) {
       menu_length = doc.length
-      console.log(doc)
       res.render('menu', {menu_length: menu_length, menu: doc, user:req.user})
     })
 }
 
 const cart_post = function (req, res){
-  const {snack_name, price, first_name} = req.body
-  let errors = []
-  console.log(req.body)
+  Snack.find()
+    .lean()
+    .then(function (doc) {
+      menu_length = doc.length
+      menu_data = doc
+    })
+
+  const {snack_name, price} = req.body
+
+  const newCart = new Cart({
+    snack_name,
+    price
+  })
+  newCart
+    .save()
+    .then((cart) => {
+      req.flash('messageSuccess', 'You have successfully added one item to cart')
+      res.render("menu", {menu_length: menu_length, menu:menu_data, successMessage: req.flash("messageSuccess"), user: req.user})
+    })
+    .catch((err) => console.log(err))
 }
 
 
