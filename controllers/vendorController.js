@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const { collection } = require("../models/author")
 
 // import snack model
 const Vendor = mongoose.model("Vendor")
@@ -17,15 +18,13 @@ const getAllVendor = async (req, res) => {
 const openVendor = function (req, res){
     const {vendor_id, location} = req.body
     let errors = []
-    console.log(vendor_id)
-    console.log(location)
     if(!vendor_id || !location) {
         req.flash('vendorError', 'Please enter all fields')
         errors.push({msg: 'Please enter all fields'});
     }
 
     if(errors.length > 0){
-        res.render("home", {
+        res.render("vendor", {
             errorMessage: req.flash("vendorError"),
             errors,
             vendor_id,
@@ -36,12 +35,22 @@ const openVendor = function (req, res){
             console.log(vendor)
             if(!vendor){
                 req.flash('vendorError', 'Vendor is not registered')
-                res.render("home", {
+                res.render("vendor", {
                     errorMessage: req.flash('vendorError'),
                     errors,
                     vendor_id,
                     location,
                 })
+            }else{
+              const filter = {vendor_id: vendor_id}
+
+              const updateDocument = {
+                $set: {
+                  isOpen: true,
+                }
+              }
+
+              const result = await collection.updateOne(filter, updateDocument)
             }
         })
     }
