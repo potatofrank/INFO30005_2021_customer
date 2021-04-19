@@ -1,0 +1,60 @@
+
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/menu.css')
+    block head
+body
+    
+    h1 Order1
+    if(order)
+        each product,id in order
+            if(product.type==="COFFEE")
+                p #{product.snack_name}
+                p #{product.price}
+                //p #{product.type}
+                //p #{product.add_on}
+                //p #{product.size}
+                p #{product.mass}
+                p #{product.calories}
+                button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
+                .product_detail
+                    p #{product.snack_name}
+                    p #{product.price}
+                    p #{product.type}
+                    p #{product.add_on}
+                    p #{product.size}
+                    span total price = 
+                    span
+                        script.
+                            document.write(#{product.price});
+                br
+    h1 Order2
+    if(order)
+        each product,id in menu
+            if(product.type==="BISCUIT")
+                p #{product.snack_name}
+                p #{product.price}
+                //p #{product.type}
+                //p #{product.add_on}
+                //p #{product.size}
+                p #{product.mass}
+                p #{product.calories}
+                button.btn(type="plus", onclick='myFunction(\'' + id + '\')') +
+                .product_detail
+                    p #{product.snack_name}
+                    p #{product.price}
+                    p #{product.type}
+                    p #{product.add_on}
+                    p #{product.size}
+                br
+
+script.
+    function myFunction(id) {
+        var x = document.getElementsByClassName("product_detail");
+        if (x[id].style.display === "block") {
+            x[id].style.display = "none";
+        } else {
+            x[id].style.display = "block";
+        }
+    };
