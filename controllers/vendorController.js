@@ -42,6 +42,7 @@ const openVendor = function (req, res){
                     location,
                 })
             }else{
+              /*
               const filter = {vendor_id: vendor_id}
 
               const updateDocument = {
@@ -50,7 +51,7 @@ const openVendor = function (req, res){
                 }
               }
 
-              const result = await collection.updateOne(filter, updateDocument)
+              //const result = await collection.updateOne(filter, updateDocument)*/
             }
         })
     }
