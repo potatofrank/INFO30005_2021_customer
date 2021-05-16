@@ -1,5 +1,6 @@
 const mongoose = require("mongoose")
 
+//set up snackSchema
 const snackSchema = new mongoose.Schema({
   snack_name: String,
   price: Number,

@@ -4,12 +4,16 @@ const express = require('express')
 const vendorRouter = express.Router()
 
 // require the vendor controller
-const vendorController = require('../controllers/vendorController.js')
+const orderController = require('../controllers/orderController.js')
 
 // handle the GET request to get all vendors
-vendorRouter.get('/', (req, res) => vendorController.getAllVendor(req, res))
+//.getAllVendor(req, res))
 
-vendorRouter.post('/vendorOpen', vendorController.openVendor)
+// handle the GET request to get all orders
+vendorRouter.get('/order', orderController.vendor_order_get)
+
+// handle the POST request to set order details
+vendorRouter.post('/order', orderController.complete_order)
 
 // export the router
 module.exports = vendorRouter

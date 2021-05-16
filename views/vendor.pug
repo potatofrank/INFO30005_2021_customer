@@ -1,9 +1,13 @@
 h1 vendorpage
 
 if (errorMessage)
-    h2 #{errorMessage}
+    p #{errorMessage}
+if (successMessage)
+    p #{successMessage}
 
-form(action='/vendor/vendorOpen', method='POST')
+a(href='/vendor/order') CheckOrders
+
+form(action='/vendor', method='POST')
     .form-group
         label(for='vendor_id') Vendor ID
         input#location.form-control(type='vendor_id', name='vendor_id', placeholder='Enter vendor id')
