@@ -3,7 +3,9 @@
 Group Hi-mate customer app Demo.
 
 This is our customer application and you can access all the customer features in this app.
+
 ## Customer Login Account
+
 > Note: Or you can register your own account
 
 Email: frank08241@gmail.com <br/>
@@ -15,6 +17,7 @@ MONGO_USERNAME=yichao <br/>
 MONGO_PASSWORD=Yyc741108
 
 ## Instruction
+
 > Note: Our APP is usable on the following screen sizes: Phone: 375 x 812 (iPhone X, portrait) Desktop: 1920 × 1080 (monitor, landscape)
 
 "Choose your desired vendor”: Here is a list that lists top 5 nearest vendors that around your current location <br/>
@@ -48,7 +51,7 @@ the discount will automatically in the current order.
 <br/>
 “Go and find to your vendor. Then Rate this experience!”: Once an order is finished you can rate this order experience,<br/>
 by clicking on your user’s name in the menu page then you will be directed to your dashboard. You can view your order history<br/>
-and give every finished order a rate! 
+and give every finished order a rate!
 <br/>
 <br/>
 “Other interesting aspects of dashboard”: You can also view your current order and sign out from it!!
@@ -62,14 +65,16 @@ and give every finished order a rate!
 -Ken lin <kenlin@student.unimelb.edu.au> <br />
 
 ## App Url
-[https://customerapp-final.herokuapp.com/]
+
+[https://https://customerappinfo30005.herokuapp.com/]
 
 ## License & copyright
+
 Permission is hereby granted, free of charge, to subject INFO30005,
-obtaining a copy of this software and associated documentation files (the "Software"), 
+obtaining a copy of this software and associated documentation files (the "Software"),
 to deal in the Software without restriction, including without limitation the rights
 to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the
-Software, and to permit persons to whom the Software is furnished to do so, subject to 
+Software, and to permit persons to whom the Software is furnished to do so, subject to
 the following conditions:
 
 The above copyright notice and this permission notice shall be included in all
@@ -84,6 +89,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 © Team Hi-mate, University of Melbourne
-
-
-
