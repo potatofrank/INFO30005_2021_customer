@@ -1,0 +1,136 @@
+doctype html
+html
+  head
+    //- <meta http-equiv="refresh" content="1">  
+    //- meta(name='viewport' content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/order_status.css')
+    script(src='https://kit.fontawesome.com/d66b1d76b9.js' crossorigin='anonymous')
+    block head
+body
+.header
+  span
+    a.icon(href="/customer/customer_order")
+      icon.fas.fa-chevron-left.fa-3x
+      //- icon.fas.fa-chevron-left
+    a.hi(href='/customer/menu/dashboard') Hi, #{user.first_name}
+br
+br
+br
+br
+br
+br
+br
+br    
+br
+br
+br
+br
+br
+br
+br
+br    
+br
+br
+br
+br
+br
+br
+br
+br
+
+
+
+if(order)
+  if(order.OrderStatus === "Cancelled")
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    br
+    h1 You've successfully cancelled the order 
+    br
+    br
+    br
+    br
+    br
+    br
+
+    form(action='/customer/menu', method='GET')
+      button.btn(type="submit") Back to menu
+  else
+    p#countHeader
+    br
+    br
+    br
+    p#countdown
+    br
+    br
+    br
+    p#countdownFail
+    br
+    br
+    br
+
+    form(method="POST" action=("/customer/menu/change-to-cart/"))
+      input(type="hidden" name ="Order", value = order)
+      button.addToCart Adjust this order
+  
+    form(action='/customer/customer_order', method='POST')
+      input(type="hidden" name ="Order", value = order)
+      button.btn(type="cancel") Cancel this order
+br    
+br
+br
+br
+
+script.
+  // Set the date we're counting down to
+  var countDownDate = #{ExpireTime};
+  var order = !{JSON.stringify(order)}
+  
+  // Update the count down every 1 second
+  var x = setInterval(function() {
+    // Get today's date and time
+    var now = new Date().getTime();
+    // Find the distance between now and the count down date
+    var distance = countDownDate - now;
+    // Time calculations for days, hours, minutes and seconds
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    if(minutes < 10){
+      minutes = '0'+minutes;
+    }
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    if(seconds < 10){
+      seconds = '0'+seconds;
+    }
+    // Output the result in an element with id="demo"
+    if(order.OrderStatus == "Fulfilled"){
+      document.getElementById("countdown").innerHTML = "--:--";
+    }else if(order.OrderStatus == "Outstanding"){
+      document.getElementById("countdown").innerHTML = minutes + ":" + seconds;
+    }
+    // If the count down is over, write some text
+    if(distance > 0){
+      if(order.OrderStatus == "Fulfilled"){
+        document.getElementById("countHeader").innerHTML = "You order is ready for picking up!";
+      }else if(order.OrderStatus == "Outstanding"){
+        document.getElementById("countHeader").innerHTML = "You will get your snacks in";
+        document.getElementById("countdownFail").innerHTML = "Please refresh this page to check your order's status!";
+      }
+    }
+    if (distance < 0) {
+
+      if(order.OrderStatus == "Outstanding"){
+        clearInterval(x);
+        document.getElementById("countHeader").innerHTML = "Sorry we didn't prepare your snacks in time";
+        document.getElementById("countdown").innerHTML = "00" + ":" + "00" ;
+        document.getElementById("countdownFail").innerHTML = "As a gesture of apology, we'll give you a 20% discount on current order";
+      }else if(order.OrderStatus == "Fulfilled"){
+        document.getElementById("countHeader").innerHTML = "You order is ready for picking up!";
+      }
+    }
+  }, 1000);

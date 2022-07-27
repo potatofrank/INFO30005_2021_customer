@@ -1,1 +1,156 @@
-a(href='/customer/menu') Menu
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/customer.css')
+    script(src='https://kit.fontawesome.com/d66b1d76b9.js' crossorigin='anonymous')
+    script(src='https://unpkg.com/leaflet@1.4.0/dist/leaflet.js' integrity='sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg==' crossorigin='')
+    script(src='http://code.jquery.com/jquery-1.9.1.min.js')
+    link(rel='stylesheet' href='https://unpkg.com/leaflet@1.4.0/dist/leaflet.css' integrity='sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==' crossorigin='')
+
+    block head
+body
+
+
+#mymap
+button.top(type="plus", onclick='myFunction()') Click here to view 5 nearest van
+.vendorsWrapper 
+    .oneVendor
+        span
+            i.fas.fa-map-marker-alt
+        form.menu(action = '/customer/menu', method = "POST")
+            input(type="hidden" name="van_name_1" id="van_name_1")
+            input(type="hidden" name="user" value=user)
+            button#vendor1.btn(type="submit")
+    .oneVendor
+        span
+            i.fas.fa-map-marker-alt
+        form.menu(action = '/customer/menu', method = "POST")
+            input(type="hidden" name="van_name_2" id="van_name_2")
+            input(type="hidden" name="user" value=user)
+            button#vendor2.btn(type="submit")
+    .oneVendor
+        span
+            i.fas.fa-map-marker-alt
+        form.menu(action = '/customer/menu', method = "POST")
+            input(type="hidden" name="van_name_3" id="van_name_3")
+            input(type="hidden" name="user" value=user)
+            button#vendor3.btn(type="submit") 
+    .oneVendor
+        span
+            i.fas.fa-map-marker-alt
+        form.menu(action = '/customer/menu', method = "POST")
+            input(type="hidden" name="van_name_4" id="van_name_4")
+            input(type="hidden" name="user" value=user)
+            button#vendor4.btn(type="submit") 
+    .oneVendor
+        span
+            i.fas.fa-map-marker-alt
+        span 
+            form.menu(action = '/customer/menu', method = "POST")
+                input(type="hidden" name="van_name_5" id="van_name_5")
+                input(type="hidden" name="user" value=user)
+                button#vendor5.btn(type="submit") 
+
+
+script.
+    function myFunction() {
+        var x = document.getElementsByClassName("vendorsWrapper");
+        if (x[0].style.display === "block") {
+            x[0].style.display = "none";
+        } else {
+            x[0].style.display = "block";
+        }
+    };
+
+script. 
+    if('geolocation' in navigator){
+        console.log('geolocation available');
+        navigator.geolocation.getCurrentPosition(position => {
+            lat = position.coords.latitude;
+            lon = position.coords.longitude;
+            vendor = !{JSON.stringify(vendors)}
+        
+            const mymap = L.map('mymap').setView([lat, lon], 15);
+            const attribution =
+            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+            const tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+            const tiles = L.tileLayer(tileUrl, { attribution });
+            tiles.addTo(mymap);
+            const marker = L.marker([lat, lon]).addTo(mymap).bindPopup("your location");
+            
+            var vendorIcon= L.icon({
+                iconUrl: '/images/cutlery.png',
+                iconSize: [32, 32],
+                iconAnchor: [25, 16]
+            })
+            
+            var vendor_dist = []
+            for (var i = 0; i < vendor.length; i++) {
+                if(vendor[i].isOpen == true){
+                    var obj = {}
+                    obj["van_name"] = vendor[i].van_name
+                    obj["distance"] = getDistanceFromLatLonInKm(lat, lon, vendor[i].Latitude, vendor[i].Longitude)
+                    vendor_dist.push(obj)
+                }
+            }
+            
+            function compare( a, b ) {
+                if ( a.distance < b.distance ){
+                    return -1;
+                }
+                if ( a.distance > b.distance ){
+                    return 1;
+                }
+                return 0;
+            }
+
+            vendor_dist.sort( compare );
+            var size = 5
+            var sorted_list = vendor_dist.slice(0, size)
+
+            vendor_marker = []
+            for (var i = 0; i < vendor.length; i++) {
+                for (var j = 0; j < sorted_list.length; j++){
+                    if(sorted_list[j].van_name == vendor[i].van_name){
+                        vendor_marker[i] = L.marker([vendor[i].Latitude, vendor[i].Longitude], {icon: vendorIcon}).addTo(mymap).bindPopup(vendor[i].van_name);
+                    }
+                }
+            }
+
+            document.getElementById('vendor1').textContent = sorted_list[0].van_name + '(' + sorted_list[0].distance + 'm' + ')';
+            document.getElementById('van_name_1').value = sorted_list[0].van_name;
+
+            document.getElementById('vendor2').textContent = sorted_list[1].van_name + '(' + sorted_list[1].distance + 'm' + ')';
+            document.getElementById('van_name_2').value = sorted_list[1].van_name;
+
+            document.getElementById('vendor3').textContent = sorted_list[2].van_name + '(' + sorted_list[2].distance + 'm' + ')';
+            document.getElementById('van_name_3').value = sorted_list[2].van_name;
+
+            document.getElementById('vendor4').textContent = sorted_list[3].van_name + '(' + sorted_list[3].distance + 'm' + ')';
+            document.getElementById('van_name_4').value = sorted_list[3].van_name;
+
+            document.getElementById('vendor5').textContent = sorted_list[4].van_name + '(' + sorted_list[4].distance + 'm' + ')';
+            document.getElementById('van_name_5').value = sorted_list[4].van_name;
+
+            function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
+                var R = 6371; // Radius of the earth in km
+                var dLat = deg2rad(lat2-lat1);  // deg2rad below
+                var dLon = deg2rad(lon2-lon1); 
+                var a = 
+                    Math.sin(dLat/2) * Math.sin(dLat/2) +
+                    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+                    Math.sin(dLon/2) * Math.sin(dLon/2)
+                    ; 
+                var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                var d = R * c * 1000; // Distance in km
+                d = Math.round(d)
+                return d;
+            }
+
+            function deg2rad(deg) {
+            return deg * (Math.PI/180)
+            }
+        })
+    } else {
+        console.log('geolocation not available');
+    }

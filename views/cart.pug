@@ -14,43 +14,54 @@ br
 hr
 h2 Your Order :
 br
+
 if(products)
-    each product in products
-        .product_in_cart
-            span #{product.qty} X  #{product.item.snack_name}
-            span.price $ #{product.price.toFixed(2)}
-            br
-            br
-            br
-    br
-    br
-    hr
-    br
-    br
-    span.total subtotal inc tax 
-    span.ttprice $ #{totalPrice.toFixed(2)}
-    br
-    br
-    span.total surcharge 
-    span.ttprice $0.00
-    br
-    br
-    span.total total : 
-    span.ttprice $ #{totalPrice.toFixed(2)}
-    br
-    br
-    br
-    br
-    br
-    br
-    form(action = '/customer/menu/cart', method = "POST")         
-        input(type="hidden" name="products" value=products)
-        input(type="hidden" name="totalPrice" value=totalPrice.toFixed(2))
-        input(type="hidden" name="CustomerInfo" value=user)
-        input(type="hidden" name="CustomerID" value=user.userID)
+    if(totalPrice>0.2)
+    
+        each product in products
+            if(product.qty!=0)
+                .product_in_cart
+                    span #{product.qty} X  #{product.item.snack_name}
+                    span.price $ #{product.price.toFixed(2)}
+                    br
+                    br
+                    br
+                    form(method="get" action=("delete-from-cart/" +  product.item.id ))
+                        button.delete delete
+        br
+        br
+        hr
+        br
+        br
+        span.total subtotal exc tax 
+        span.ttprice $ #{(totalPrice*10/11).toFixed(2)}
+        br
+        br
+        span.total tax 9% 
+        span.ttprice #{(totalPrice/11).toFixed(2)}
+        br
+        br
+        span.total total : 
+        span.ttprice $ #{totalPrice.toFixed(2)}
+        br
+        br
+        br
+        br
+        br
+        br
+        form(action = '/customer/menu/cart', method = "POST")         
+            input(type="hidden" name="products" value=products)
+            input(type="hidden" name="totalPrice" value=totalPrice.toFixed(2))
+            input(type="hidden" name="CustomerInfo" value=user)
+            input(type="hidden" name="CustomerID" value=user.userID)
+            input(type="hidden" name="current_van" value=user.current_van)
+            
+            .buttonContainer
+                button.btn(type="complete") PROCEED TO CHECK OUT
+    else 
+        p OOPS, YOUR CART IS EMPTY
         
-        .buttonContainer
-            button.btn(type="complete") PROCEED TO CHECK OUT
+
 
 form(action = '/customer/menu/cart', method = "POST")         
     input(type="hidden" name="products")

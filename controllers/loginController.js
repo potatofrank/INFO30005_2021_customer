@@ -26,7 +26,7 @@ const login_post = function(req, res, next){
 //GET function to log out from current user 
 const logout_get = function (req, res) {
     req.logout();
-    res.redirect("/customer/menu")
+    res.redirect("/customer")
 }
 
 //GET function to render the forget password page
@@ -37,6 +37,12 @@ const password_forget_get = function(req,res){
 //GET function to render the register page
 const register_get = function(req,res){
     res.render("register")
+}
+
+const login_pass = function(req, res){
+    const {current_van} = req.body
+    console.log(current_van)
+    res.render("login", {user: req.user, current_van:current_van})
 }
 
 //POST function to register new users
@@ -56,9 +62,19 @@ const register_post = function(req,res){
         errors.push({ msg: 'Passwords do not match' });
     }
 
-    if (password.length < 6) {
-        req.flash('registerError', 'Password must be at least 6 characters');
-        errors.push({ msg: 'Password must be at least 6 characters' });
+    if (password.length < 8) {
+        req.flash('registerError', 'Password must be at least 8 characters');
+        errors.push({ msg: 'Password must be at least 8 characters' });
+    }
+
+    if(password.search(/\d/) == -1){
+        req.flash('registerError', 'Password must contain at least 1 numerical digit');
+        errors.push({ msg: 'Password must contain at least 1 numerical digit' });
+    }
+
+    if(password.search(/[a-zA-Z]/) == -1){
+        req.flash('registerError', 'Password must contain at least 1 letter');
+        errors.push({ msg: 'Password must contain at least 1 letter' });
     }
 
     //return error when there's any
@@ -128,5 +144,5 @@ function makeid(length) {
 
 //exports all functions
 module.exports = {
-    login_get, password_forget_get, register_get, register_post, login_post, dashboard_get, logout_get //, updateAuthor, addAuthor
+    login_get, password_forget_get, register_get, register_post, login_post, dashboard_get, logout_get, login_pass //, updateAuthor, addAuthor
 }

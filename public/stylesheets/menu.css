@@ -136,13 +136,28 @@ html{
    height: 100px;
 }
 .hi{
-    
     padding: 40px 180px;
     margin-top: 30px;
+    text-align: center;
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     text-transform: uppercase;
     border: 0px;
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+form{
+    display: inline;
+}
+button.login{
+    width: 60%;
+    margin-top: 30px;
+    font-size: 50px;
+    font-family: 'Courier New', Courier, monospace;
+    text-transform: uppercase;
+    border: none;
+    background: none;
     text-decoration: none;
     font-weight: bold;
     color: black;

@@ -10,9 +10,12 @@ body
             a.icon(href="/customer")
                 icon.fas.fa-chevron-left.fa-3x
         if(user)
-            span.hi HI, #{user.first_name}
+            a.hi(href='/customer/menu/dashboard') Hi, #{user.first_name}        
+
         else
-            a.hi(href='/customer/menu/login') Log in
+            form(action='/customer/menu/login_pass', method='POST')
+                input(type="hidden" name="current_van" value = current_van)
+                button.login(type='submit') Log in
         span
             a.cart(href='/customer/menu/cart')
                 icon.fas.fa-cart-plus.fa-3x

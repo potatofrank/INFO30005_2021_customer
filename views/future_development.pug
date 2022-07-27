@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/cannot_modify.css')
+    script(src='https://kit.fontawesome.com/d66b1d76b9.js' crossorigin='anonymous')
+    block head
+  body
+
+    a.icon(href="/customer/menu/dashboard")
+      icon.fas.fa-chevron-left.fa-3x
+    if(user)
+      a.hi(href='/customer/menu/dashboard') Hi, #{user.first_name}
+
+    else
+      form(action='/customer/menu/login_pass', method='POST')
+          input(type="hidden" name="current_van" value = current_van)
+          button.login(type='submit') Log in
+
+    p.warningUser THIS FEATURE IS NOT IN THE PROJECT REQUIREMENT, MAY OR MAY NOT BE IMPLEMENTED :)

@@ -13,18 +13,29 @@ body
   if(orders)
     each order_item in orders
         if(order_item.CustomerID === user.userID)
+          if(order_item.OrderStatus!="Cancelled")
             .each_order
                 p.time Order Time: 
                 span.sub_time  #{order_item.OrderedTime}
                 span.time Order status: #{order_item.OrderStatus}
                 .order_product
                 each snack in order_item.OrderedProduct
-                    p #{snack.snack_name} * #{snack.quantity}
+                    if(snack.quantity!=0)
+                      p #{snack.snack_name} * #{snack.quantity}
+              
+                .order_footer
+                  span.rating
+                    if(order_item.isRated === true)
+                      p you have rated this order 
+                    else
+                      form(action='/customer/customer_order/rating', method='POST')
+                        input(type="hidden" name="order_item" value = order_item)
+                        input(type="hidden" name="user" value = user)
+                        button.button.yellow(type='submit') Rate this order
+                  span.price  $#{order_item.totalPrice} 
+                  
 
-                <div class="order_footer">
-                <span class="rating"> <span class="star">★</span> Rating this order </span>
-                <span class="price"> $#{order_item.totalPrice} </span>
-                </div>
+
 
 
   br

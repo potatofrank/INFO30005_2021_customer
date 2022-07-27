@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
   email: String,
   password: String,
   userID: String,
+  current_van: String,
+  latestOrder: String,
+  currently_rating: String,
 })
 
 const User = mongoose.model("User", userSchema)

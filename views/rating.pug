@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/rating.css')
+    script(src="https://kit.fontawesome.com/d66b1d76b9.js" crossorigin='anonymous') 
+    block head
+body
+
+
+    //- form(action='/customer/customer_order/rating/review', method='POST')
+    //-     .form-group
+    //-         label(for='rating_score') Rate your experience out of 5
+    //-         input(type='rating_score', name='rating_score')
+    //-     .form-group
+    //-         label(for='review') Write your review
+    //-         input(type='review', name='review', placeholder='optional')
+    //-     input(type="hidden" name="OrderID" value = order_detail.OrderID)
+    //-     input(type="hidden" name="order_detail" value = order_detail)
+    //-     button.btn.btn-primary(type='submit') Review
+    
+    .ratingContainer
+        .skipButton
+            form(action= "/customer/customer_order", method= "GET")
+                button.skip(type= "submit") SKIP 
+        p HOW WAS YOUR EXPERIENCE?
+        form(action='/customer/customer_order/rating/review', method='POST')
+            .star-wrapper
+                if(rating)
+                    if(rating==1)
+                        a.fas.fa-star.s1(href='/customer/customer_order/rating/5')
+                        a.fas.fa-star.s2(href='/customer/customer_order/rating/4')
+                        a.fas.fa-star.s3(href='/customer/customer_order/rating/3')
+                        a.fas.fa-star.s4(href='/customer/customer_order/rating/2')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/1')
+                    if(rating==2)
+                        a.fas.fa-star.s1(href='/customer/customer_order/rating/5')
+                        a.fas.fa-star.s2(href='/customer/customer_order/rating/4')
+                        a.fas.fa-star.s3(href='/customer/customer_order/rating/3')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/2')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/1')
+                    if(rating==3)
+                        a.fas.fa-star.s1(href='/customer/customer_order/rating/5')
+                        a.fas.fa-star.s2(href='/customer/customer_order/rating/4')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/3')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/2')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/1')
+                    if(rating==4)
+                        a.fas.fa-star.s1(href='/customer/customer_order/rating/5')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/4')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/3')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/2')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/1')
+                    if(rating==5)
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/5')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/4')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/3')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/2')
+                        a.fas.fa-star.gold(href='/customer/customer_order/rating/1')
+
+
+                else
+                    a.fas.fa-star.s1(href='/customer/customer_order/rating/5')
+                    a.fas.fa-star.s2(href='/customer/customer_order/rating/4')
+                    a.fas.fa-star.s3(href='/customer/customer_order/rating/3')
+                    a.fas.fa-star.s4(href='/customer/customer_order/rating/2')
+                    a.fas.fa-star.s5(href='/customer/customer_order/rating/1')
+            input.review(type='review', name='review', placeholder="Please Comment Here~", rows = '6', cols='50')
+            input(type="hidden" name="OrderID" value = order_detail.OrderID)
+            input(type="hidden" name="order_detail" value = order_detail)
+            input(type="hidden" name="rating" value = rating || 0)
+            button.submit(type='submit') Review

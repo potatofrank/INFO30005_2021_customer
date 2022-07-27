@@ -37,15 +37,16 @@ html
                 label(for='password') PASSWORD 
                 .input 
                     input#password.form-control(type='password', name='password')
+            input(type="hidden" name="current_van" value = current_van)
             button.btn(type='submit') LOGIN 
             .contact 
-                a(href="#" class ="red") GOOGLE 
+                a(href='/customer/future_development' class ="red") GOOGLE 
                 .line | 
-                a(href="#" class ="blue") FACEBOOK 
+                a(href='/customer/future_development' class ="blue") FACEBOOK 
                 .line |  
-                a(href="#" class ="darkblue") TWITTER 
+                a(href='/customer/future_development' class ="darkblue") TWITTER 
 
 
 
-            a(href='/customer/menu/login/forgot_password' class="bottombtn1") Forgotten Password?
+            a(href='/customer/future_development' class="bottombtn1") Forgotten Password?
             a(href='/customer/menu/login/register' class="bottombtn2") Create new account?

@@ -1,0 +1,110 @@
+body {
+    text-transform: uppercase;
+    background-color: antiquewhite;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    text-align: center;
+    color: #393939;
+}
+
+.header {
+    z-index: 10000;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+    background-color: antiquewhite;
+    height: 100px;
+}
+
+.icon {
+    float: left;
+    padding: 30px 30px;
+    color:#000000;
+}
+
+h1{
+    font-size: 60px;
+    padding-left: 4%;
+    width: 90%;
+    word-spacing: 10px;
+}
+
+
+.hi{
+    display:inline-block;
+    margin-right: 29%;
+    padding-left: 18%;
+    /* padding-top: 10px; */
+    padding-top: 30px;
+    font-size: 50px;
+    text-transform: uppercase;
+    border: 0px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+}
+
+#countHeader{
+    font-family: 'Courier New', Courier, monospace;
+    display:inline-block;
+    font-size: 50px;
+    width: 90%;
+}
+
+#countdown{
+    display: inline-block;
+    letter-spacing: 4px;
+    background-color: #B7E5B9;
+    border-radius: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 28px;
+    margin-top: -10px;
+    margin-bottom: 7px;
+    font-size: 250px;
+    box-sizing: border-box;
+    width: 90%;
+    box-shadow: 5px 3px 10px #969696;
+}
+
+#countdownFail{
+    font-family: 'Courier New', Courier, monospace;
+    display:inline-block;
+    font-size: 39px;
+    width: 90%;
+}
+
+button.addToCart{
+    font-size: 50px;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    border-color: FFFFFF;
+    border-radius: 30px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-bottom: 2.5%;
+    width: 90%;
+    color: #393939;
+    border: none;
+}
+
+button.btn{
+    font-size: 50px;
+    background-color: #FFFFFF;
+    font-weight: bold;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    font-family: 'Courier New', Courier, monospace;
+    border-color: FFFFFF;
+    border-radius: 30px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    margin-bottom: 10px;
+    width: 90%;
+    color: #393939;
+    border: none;
+}

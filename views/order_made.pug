@@ -1,0 +1,14 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/cannot_modify.css')
+    script(src='https://kit.fontawesome.com/d66b1d76b9.js' crossorigin='anonymous')
+    block head
+  body
+
+    a.icon(href="/customer/order_status")
+      icon.fas.fa-chevron-left.fa-3x
+    a.hi(href='/customer/menu/dashboard') Hi, #{user.first_name}
+    
+    br
+    p.warningUser We feel sorry that you're changing your mind, but you can't change it now since it is ready

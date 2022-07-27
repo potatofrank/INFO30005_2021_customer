@@ -10,6 +10,7 @@ const snackSchema = new mongoose.Schema({
   size: String,
   mass: String,
   calories: String,
+  id:String,
 })
 
 const Snack = mongoose.model("Snack", snackSchema)

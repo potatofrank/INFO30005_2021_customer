@@ -1,0 +1,174 @@
+@media screen and (max-width: 1000px) {
+        #mymap {
+        height: 100%;
+        width: 100%;
+        z-index: 0;
+        position: fixed;
+        top:0;
+        left:0;
+    }
+    button.top{
+        margin-top: 5%;
+        float: right;
+        width: 90.4%;
+        padding-top: 3.5%;
+        padding-bottom: 4%;
+        margin-right: 5%;
+        font-size: 40px;
+        border-top-left-radius: 35px;
+        border-top-right-radius: 35px;
+        z-index: 1;
+        position: relative;
+        background: white;
+        border-style: thick;
+        border: solid;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+    }
+    button.top:hover{
+        background: white;
+    }
+    button.top:active{
+        background: whitesmoke;
+
+    }
+    .vendorsWrapper{
+        float: right;
+        width: 90%;
+        height: 550px;
+        margin-right: 5%;
+        font-size: 40px;
+        border-bottom-left-radius: 35px;
+        border-bottom-right-radius: 35px;
+        z-index: 1;
+        position: relative;
+        background: white;
+        border-style: thick;
+        opacity: 80%;
+        border: solid;
+        display: none;
+    }
+    .oneVendor{
+        padding-top: 3%;
+        height: 10%;
+        padding-bottom: 3%;
+        font-size: 40px;
+    }
+    i.fas.fa-map-marker-alt{
+        font-size: 40px;
+        color: red;
+        margin-left: 2%;
+    }
+    .btn{
+        float:right;
+        border: none;
+        background: none;
+        width: 85%;
+        height:100%;
+        font-size: 40px;
+        margin-right: 5%;
+        border-radius: 10px;
+        background-color: inherit;
+        font-family: 'Courier New', Courier, monospace;
+        font-weight: 800;
+    }
+    .btn:hover{
+        background-color: rgb(189, 188, 188);
+    }
+    .btn:active{
+        background-color: rgb(189, 188, 188);
+    }
+    form.menu{
+        display: inline;
+    }
+    button.tri{
+        font-size: 30px;
+    }
+}
+@media screen and (min-width: 1000px) {
+    #mymap {
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    position: fixed;
+    top:0;
+    left:0;
+}
+button.top{
+    margin-top: 5%;
+    float: right;
+    width: 90.4%;
+    padding-top: 1.5%;
+    padding-bottom: 2%;
+    margin-right: 5%;
+    font-size: 40px;
+    border-top-left-radius: 35px;
+    border-top-right-radius: 35px;
+    z-index: 1;
+    position: relative;
+    background: white;
+    border-style: thick;
+    border: solid;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+button.top:hover{
+    background: white;
+}
+button.top:active{
+    background: whitesmoke;
+
+}
+.vendorsWrapper{
+    float: right;
+    width: 90%;
+    height: 600px;
+    margin-right: 5%;
+    font-size: 40px;
+    border-bottom-left-radius: 35px;
+    border-bottom-right-radius: 35px;
+    z-index: 1;
+    position: relative;
+    background: white;
+    border-style: thick;
+    opacity: 80%;
+    border: solid;
+    display: none;
+}
+.oneVendor{
+    padding-top: 1%;
+    height: 12%;
+    padding-bottom: 1%;
+    font-size: 40px;
+}
+i.fas.fa-map-marker-alt{
+    font-size: 40px;
+    color: red;
+    margin-left: 2%;
+}
+.btn{
+    float:right;
+    border: none;
+    background: none;
+    width: 85%;
+    height:100%;
+    font-size: 40px;
+    margin-right: 5%;
+    border-radius: 10px;
+    background-color: inherit;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 800;
+}
+.btn:hover{
+    background-color: rgb(189, 188, 188);
+}
+.btn:active{
+    background-color: rgb(189, 188, 188);
+}
+form.menu{
+    display: inline;
+}
+button.tri{
+    font-size: 30px;
+}
+}

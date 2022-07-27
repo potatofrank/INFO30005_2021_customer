@@ -1,9 +1,73 @@
-if(user)
-    h1 Welcome to your dashboard #{user.first_name}
-a(href='/customer/customer_order') View my orders 
-br
-br
-a(href='/customer/menu') menu
-br
-br
-a(href='/customer/menu/dashboard/logout') Log out
+html
+  head
+    link(rel='stylesheet', href='/stylesheets/dashboard.css')
+    script(src='https://kit.fontawesome.com/d66b1d76b9.js' crossorigin='anonymous')
+    block head
+body
+    .header
+        span
+            a.icon(href="/customer")
+                icon.fas.fa-chevron-left.fa-3x
+        if(user)
+            a.hi(href='/customer/menu/dashboard') Hi, #{user.first_name}        
+
+    img.icon(src='/images/icon1.png' width='300px' height='auto')
+    .name #{user.first_name +" " + user.last_name}
+    .personal 
+        .link
+            span 
+                i.fas.fa-heart
+            a.linkName(href='/customer/order_status') Recent Order
+        .link
+            span 
+                i.fas.fa-wallet
+            a.linkName(href='/customer/future_development') Wallet
+        .link
+            span 
+                i.fas.fa-receipt
+            a.linkName(href='/customer/customer_order') Order History
+    .admin 
+        .adminLink
+            span 
+                i.fas.fa-pen-square
+            a.linkName(href='/customer/future_development') Send us feedback
+        .adminLink
+            span 
+                i.fas.fa-comments
+            a.linkName(href='/customer/future_development') chat with us
+        .adminLink
+            span 
+                i.fas.fa-question
+            a.linkName(href='/customer/future_development') help
+        .adminLink
+            span 
+                i.fas.fa-hand-paper
+            a.linkName(href='/customer/future_development') privacy policy
+        .adminLink
+            span 
+                i.fas.fa-list
+            a.linkName(href='/customer/future_development') terms of service
+        
+        br
+        br
+        br
+        .adminLink
+            span 
+                i.fas.fa-sign-out-alt
+            a.linkName(href='/customer/menu/dashboard/logout') sign out
+        br
+        br
+        br
+
+
+    //- br
+    //- br
+    //- br
+    //- br
+    //- a(href='/customer/customer_order') View my orders 
+    //- br
+    //- br
+    //- a(href='/customer/menu') menu
+    //- br
+    //- br
+    //- a(href='/customer/menu/dashboard/logout') Log out   

@@ -12,7 +12,6 @@ const passport = require('passport')
 // connect to models to routes
 require('./models/database')
 const indexRouter = require('./index')
-const vendorRouter = require('./vendor_routes/vendorRouter')
 const customerRouter = require('./customer_routes/customerRouter')
 
 //view engine set up
@@ -38,7 +37,6 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 app.use('/', indexRouter);
-app.use('/vendor', vendorRouter)
 app.use('/customer', customerRouter)
 
 //catch 404 and forward to error handler

@@ -10,6 +10,8 @@ var { ensureAuthenticated } = require('../config/auth')
 //handle the GET request to render all snacks
 router.get('/menu', snack_controller.menu_get)
 
+router.post('/menu', snack_controller.menu_post)
+
 //handle the GET request to render all items in the cart
 router.get('/menu/cart', ensureAuthenticated, cart_controller.cart_get)
 
@@ -21,6 +23,8 @@ router.get('/menu/login', login_controller.login_get)
 
 //handle the POST request to authenticate user information
 router.post('/menu/login', login_controller.login_post)
+
+router.post('/menu/login_pass', login_controller.login_pass)
 
 //handle the GET request to render the register page
 router.get('/menu/login/register', login_controller.register_get)
@@ -40,8 +44,30 @@ router.get('/menu/dashboard', ensureAuthenticated, login_controller.dashboard_ge
 //handle the GET request to add items to the cart
 router.get('/menu/add-to-cart/:id', ensureAuthenticated, cart_controller.add_to_cart)
 
+//handle the GET request to change ordered items to the cart
+router.post('/menu/change-to-cart/', ensureAuthenticated, cart_controller.change_to_cart)
+
+//handle the GET request to delete items from the cart
+router.get('/menu/delete-from-cart/:id', ensureAuthenticated, cart_controller.delete_from_cart)
+
 //handle the GET request to render the order history of a customer
 router.get('/customer_order', ensureAuthenticated, order_controller.order_get)
 
+//handle the GET request to render the order history of a customer
+router.get('/customer_order/rating/:id', ensureAuthenticated, order_controller.rating_get)
+
+router.post('/customer_order/rating', ensureAuthenticated, order_controller.rating_post)
+
+router.post('/customer_order/', ensureAuthenticated, order_controller.cancel_order)
+
+router.post('/customer_order/rating/review', ensureAuthenticated, order_controller.review_post)
+
+router.get('/order_status', ensureAuthenticated, order_controller.order_status_get)
+
+router.get('/order_status/cannot_modify', ensureAuthenticated, order_controller.cannot_modify_get)
+
+router.get('/order_status/order_made', ensureAuthenticated, order_controller.order_made_get)
+
+router.get('/future_development', snack_controller.future_get)
 //export routes
 module.exports = router
